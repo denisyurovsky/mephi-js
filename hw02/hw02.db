@@ -1,0 +1,23 @@
+CREATE TABLE Customers (
+CustomerId SERIAL PRIMARY KEY,
+FirstName VARCHAR(255),
+LastName VARCHAR(255),
+email VARCHAR(255) NOT NULL
+)
+CREATE TABLE Products (
+ProductId SERIAL PRIMARY KEY,
+ProductName VARCHAR(255)
+)
+
+CREATE TABLE Orders (
+OrderId SERIAL PRIMARY KEY,
+ProductId INT REFERENCES Products(ProductId),
+CustomerId INT REFERENCES Customers(CustomerId),
+OrderDate DATE NOT NULL
+)
+
+INSERT INTO Customers (FirstName, LastName, email) VALUES ('Denis', 'Yurovsky', 'test@mail.ru')
+
+INSERT INTO Products (ProductName) VALUES ('Macbook')
+
+INSERT INTO Orders (ProductId , CustomerId , OrderDate) VALUES (1, 1, DATE '2023-03-13') 
