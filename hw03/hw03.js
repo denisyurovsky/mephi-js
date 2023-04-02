@@ -11,6 +11,7 @@ class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.length = 0;
   }
 
   append(value) {
@@ -19,12 +20,13 @@ class LinkedList {
       this.head = newNode;
       this.tail = newNode;
 
+      this.length++;
       return this;
     }
-
     this.tail.next = newNode;
     this.tail = newNode;
-
+    
+    this.length++;
     return this;
   }
 
@@ -35,6 +37,7 @@ class LinkedList {
       this.tail = newNode;
     }
 
+    this.length++;
     return this;
   }
 
@@ -75,6 +78,10 @@ class LinkedList {
 
     return deleteNode;
   }
+
+  get length() {
+    return this.length;
+  }
 }
 
 const list = new LinkedList();
@@ -109,7 +116,6 @@ class BinaryTreeNode {
       this.right.parent = this;
     }
   }
-}
 }
 
 class BinaryTree {
